@@ -1,4 +1,5 @@
 const config = {
+  SENTRY_DSN: "https://your-dsn-id-here@sentry.io/123456",
   MAX_ATTACHMENT_SIZE: 5000000,
   // Backend config
   s3: {
