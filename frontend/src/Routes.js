@@ -9,12 +9,13 @@ import Notes from "./containers/Notes";
 import Settings from "./containers/Settings";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
+import ResetPassword from "./containers/ResetPassword";
 
 export default function Links() {
     return (
         <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route path="*" element={<NotFound />}/>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
             <Route
                 path="/login"
                 element={
@@ -56,6 +57,15 @@ export default function Links() {
                     </AuthenticatedRoute>
                 }
             />
+
+<Route
+  path="/login/reset"
+  element={
+    <UnauthenticatedRoute>
+      <ResetPassword />
+    </UnauthenticatedRoute>
+  }
+/>
         </Routes>
 
     );
