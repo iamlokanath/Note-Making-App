@@ -1,2 +1,14 @@
-.App {
+.main {
+    width: 100vw;
+    height: 100vh;
+}
+
+.background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: fit;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
 }
