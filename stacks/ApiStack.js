@@ -7,7 +7,6 @@ export function ApiStack({ stack, app }) {
   // Create the API
   const api = new Api(stack, "Api", {
     defaults: {
-      memorySize: 128,
     authorizer: "iam",
       function: {
         permissions: [table],

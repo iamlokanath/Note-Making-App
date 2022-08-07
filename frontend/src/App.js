@@ -3,7 +3,6 @@ import Navbar from "react-bootstrap/Navbar";
 import "./App.css";
 import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
-import { Link } from "react-router-dom"
 import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./lib/contextLib";
 import { Auth } from "aws-amplify";
@@ -12,22 +11,27 @@ import ErrorBoundary from "./components/ErrorBoundary";
 function App() {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+
   useEffect(() => {
+   
+
+    async function onLoad() {
+      try {
+        await Auth.currentSession();
+        userHasAuthenticated(true);
+      } catch (e) {
+        if (e !== "No current user") {
+          alert(e);
+        }
+      }
+  
+      setIsAuthenticating(false);
+    }
+
     onLoad();
   }, []);
 
-  async function onLoad() {
-    try {
-      await Auth.currentSession();
-      userHasAuthenticated(true);
-    } catch (e) {
-      if (e !== "No current user") {
-        alert(e);
-      }
-    }
-
-    setIsAuthenticating(false);
-  }
+  
   async function handleLogout() {
     await Auth.signOut();
 

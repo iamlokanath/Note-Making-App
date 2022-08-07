@@ -8,6 +8,8 @@ import { useFormFields } from "../lib/hooksLib";
 import { onError } from "../lib/errorLib";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import GoogleButton from "../components/Signing/GoogleButton";
+import FacebookButton from "../components/Signing/FacebookButton";
 
 export default function Login() {
   // const nav = useNavigate();
@@ -38,6 +40,8 @@ export default function Login() {
 
   return (
     <div className="Login">
+      <GoogleButton />
+      <FacebookButton />
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
