@@ -10,7 +10,6 @@ import {
 import { BsCheck } from "react-icons/bs";
 import LoaderButton from "../components/LoaderButton";
 import { useFormFields } from "../lib/hooksLib";
-import { onError } from "../lib/errorLib";
 import "./ResetPassword.css";
 
 export default function ResetPassword() {
