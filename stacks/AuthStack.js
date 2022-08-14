@@ -21,8 +21,10 @@ export function AuthStack({ stack, app }) {
         supportedIdentityProviders: [cognito.UserPoolClientIdentityProvider.GOOGLE,
         cognito.UserPoolClientIdentityProvider.FACEBOOK],
         oAuth: {
-          callbackUrls: ["http://localhost:3000"],
-          logoutUrls: ["http://localhost:3000"],
+          callbackUrls: ["http://localhost:3000","https://pacific-note.netlify.app"],
+          logoutUrls: ["http://localhost:3000","https://pacific-note.netlify.app"],
+
+          
         },
       },
     }
@@ -54,17 +56,17 @@ export function AuthStack({ stack, app }) {
       },
     }
   );
-  
+
 
   // attach the created provider to our userpool
-  auth.cdk.userPoolClient.node.addDependency(GoogleProvider,FacebookProvider);
+  auth.cdk.userPoolClient.node.addDependency(GoogleProvider, FacebookProvider);
 
   auth.attachPermissionsForAuthUsers(stack, [
     // Allow access to the API
     api,
     // Policy granting access to a specific folder in the bucket
     new iam.PolicyStatement({
-      actions: ["s3:*"],
+      actions: ["s3:*", "ses:SendEmail", "ses:SendRawEmail"],
       effect: iam.Effect.ALLOW,
       resources: [
         bucket.bucketArn + "/private/${cognito-identity.amazonaws.com:sub}/*",

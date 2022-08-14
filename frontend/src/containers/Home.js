@@ -29,7 +29,7 @@ export default function Home() {
         const notes = await loadNotes();
         setNotes(notes);
       } catch (e) {
-        onError(e);
+        onError(e); 
         console.log(e);
       }
 
